@@ -1,26 +1,32 @@
 import java.util.Scanner;
 
 public class RecPrime {
-    static void prime(int sayi) {
-        boolean isPrime = true;
-        for (int i = 2; i < sayi; i++) {
-            if (sayi % i == 0) {
-                isPrime = false;
-                break;
+    static int prime(int a,int b) {
+
+        if (b == 1) {
+            return 1;
+        } else {
+            {
+                if (a % b == 0) {
+                    return 0;
+                } else {
+                    return prime(a, b - 1);
+                }
             }
         }
-        if (!isPrime) {
-            System.out.print(sayi + " asal değildir.");
-        } else
-            System.out.print(sayi + " asal sayıdır.");
-
     }
-
     public static void main(String[] args) {
-        int sayi;
         Scanner input = new Scanner(System.in);
-        System.out.print("bir sayı girin:");
-        sayi = input.nextInt();
-        prime(sayi);
+        System.out.print("Pozitif sayi giriniz: ");
+        int sayi = input.nextInt();
+
+        int bool = prime(sayi,sayi/2);
+
+        if(bool == 1){
+            System.out.println(sayi+" Sayi asal ");
+        }
+        else {
+            System.out.println(sayi+" Sayi asal degildir");
+        }
     }
 }
